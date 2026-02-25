@@ -1,0 +1,86 @@
+# Python
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info
+dist
+build
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+.env/
+*.venv
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+staticfiles/
+media/
+*.pot
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+*.env
+
+# Database
+*.sql
+*.sqlite
+*.sqlite3
+*.db
+
+# MySQL
+mysql-data/
+*.mysql
+
+# MongoDB
+mongo-data/
+*.mongodb
+
+# JWT & Security
+*.pem
+*.key
+*.crt
+secret_key.txt
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Testing
+.coverage
+.pytest_cache/
+htmlcov/
+.tox/
+*.cover
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# Backup files
+*.bak
+*.backup
+
+# Logs
+logs/
+*.log
+pip-log.txt
+
+# OS
+Thumbs.db
+.DS_Store
