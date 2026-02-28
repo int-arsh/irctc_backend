@@ -4,10 +4,14 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 from .models import Train
 from .serializers import TrainSerializer
+from core.mongo_utils import log_search_request
+import time
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def search_trains(request):
+    start_time = time.time()
+    
     source = request.query_params.get('source', '').strip()
     destination = request.query_params.get('destination', '').strip()
     
@@ -41,7 +45,15 @@ def search_trains(request):
     
     serializer = TrainSerializer(trains, many=True)
     
-    # TODO: Log to MongoDB here (execution time, params, user_id)
+    # Log to MongoDB (execution time, params, user_id)
+    execution_time = (time.time() - start_time) * 1000  # Convert to milliseconds
+    log_search_request(
+        user_id=request.user.id,
+        source=source,
+        destination=destination,
+        execution_time=execution_time,
+        result_count=total_count
+    )
     
     return Response({
         'count': total_count,
